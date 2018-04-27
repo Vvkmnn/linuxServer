@@ -1,9 +1,7 @@
 # linuxServer
 
-![](img/1.jpeg)
-
 Another project for the [Udacity Full
-Stack Vimdegree](https://classroom.udacity.com/vimdegrees/nd004/); proving
+Stack Nanodegree](https://classroom.udacity.com/vimdegrees/nd004/); proving
 acces to a database via PostgreSQL and Flask, hosted via a Ubuntu Linux-based Amazon AWS Lightsail instance.
 
 ## Result
