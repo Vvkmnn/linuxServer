@@ -67,7 +67,7 @@ server instance.
 
 __Note:__ Remember to add and save port 2200 with __Application__ as __Custom__ and __Protocol__ as __TCP__ in the Networking section of your instance on Amazon Lightsail:
 
-![](img/2.png)
+![](img/lightsail.jpeg)
 
 ## Configure Uncomplicated Firewall (UFW)
 
@@ -83,6 +83,8 @@ sudo ufw allow 123/udp
 sudo ufw enable
 sudo ufw status
 ```
+
+![](img/firewall.png)
 
 ## Configure local timezone
 
