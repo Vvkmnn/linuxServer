@@ -7,11 +7,14 @@ acces to a database via PostgreSQL and Flask, hosted via a Ubuntu Linux-based Am
 ## Result
 
 IP address: [http://18.218.229.119/](http://18.218.229.119/)
+
 SSH port: 2200
 
 ## Building
 
 ### Register on Amazon
+
+![](img/lightsail.jpeg)
 
 Create an [Amazon AWS Lightsail account](https://portal.aws.amazon.com/), and
 create a [Ubuntu
@@ -65,7 +68,6 @@ server instance.
 
 __Note:__ Remember to add and save port 2200 with __Application__ as __Custom__ and __Protocol__ as __TCP__ in the Networking section of your instance on Amazon Lightsail:
 
-![](img/lightsail.jpeg)
 
 ## Configure Uncomplicated Firewall (UFW)
 
