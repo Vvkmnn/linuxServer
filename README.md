@@ -9,21 +9,18 @@ acces to a database via PostgreSQL and Flask, hosted via a Ubuntu Linux-based Am
 ## Result
 
 IP address: [http://18.218.229.119/](http://18.218.229.119/)
-Accessible SSH port: 2200
+SSH port: 2200
 
 ## Building
 
-Follow these instructions to set it up via [Amazon Lightsail](https://aws.amazon.com/lightsail/)!
-
-
-### 0 - Register on Amazon
+### Register on Amazon
 
 Create an [Amazon AWS Lightsail account](https://portal.aws.amazon.com/), and
 create a [Ubuntu
 Linux](https://lightsail.aws.amazon.com/ls/docs/getting-started/article/getting-started-with-amazon-lightsail)
 server instance.
 
-## SSH access to the instance
+## SSH into the instance
 
 1. Download Private Key in the __Account__ section on Amazon Lightsail.
 2. Move the private key into the directory `~/.ssh` (~ is your home directory).
@@ -58,21 +55,21 @@ server instance.
 
 	`ssh -i ~/.ssh/udacity_key.rsa grader@18.218.229.119`
 
-## Update all currently installed packages
+## Update installed packages
 
 	sudo apt-get update
 	sudo apt-get upgrade
 
-## Change the SSH port from 22 to 2200
+## Change SSH port from 22 to 2200
 
 1. Use `sudo vim /etc/ssh/sshd_config` and then change Port 22 to Port 2200, save & quit.
 2. Reload SSH: `sudo service ssh restart`
 
 __Note:__ Remember to add and save port 2200 with __Application__ as __Custom__ and __Protocol__ as __TCP__ in the Networking section of your instance on Amazon Lightsail:
 
-![](img/firewall.png)
+![](img/2.png)
 
-## Configure the Uncomplicated Firewall (UFW)
+## Configure Uncomplicated Firewall (UFW)
 
 Only allow incoming connections for SSH (port 2200), HTTP (port 80), and NTP (port 123)
 
@@ -87,9 +84,7 @@ sudo ufw enable
 sudo ufw status
 ```
 
-![](img/ufw.png)
-
-## Configure the local timezone to UTC
+## Configure local timezone
 
 1. Configure the time zone `sudo dpkg-reconfigure tzdata`
 
@@ -126,9 +121,7 @@ sudo ufw status
 9. Quit postgreSQL: `postgres=# \q`
 10. Exit from user "postgres": `exit`
 
-![](img/postgres.png)
-
-## Git and your Catalog App project.
+## Git checkout the Catalog App 
 1. Install Git: `sudo apt-get install git`
 2. Use `cd /var/www` to move to the /var/www directory
 3. Create application directory: `sudo mkdir FlaskApp`
@@ -147,7 +140,7 @@ sudo ufw status
 15. Fill database `sudo pip install fill_catalog.py`
 
 
-## Configure and Enable a New Virtual Host
+## Configure and Enable New Virtual Host
 1. Create FlaskApp.conf to edit: `sudo vim /etc/apache2/sites-available/FlaskApp.conf`
 2. Add the following lines of code:
 
@@ -172,8 +165,8 @@ sudo ufw status
 	```
 3. Enable the virtual host: `sudo a2ensite FlaskApp`
 
-## wsgi File
-1. Create the .wsgi File under /var/www/FlaskApp:
+## Define [WSGI](http://wsgi.readthedocs.io/en/latest/what.html) 
+1. Create the `.wsgi` under /var/www/FlaskApp:
 
 	```
 	cd /var/www/FlaskApp
