@@ -4,13 +4,19 @@ Another project for the [Udacity Full
 Stack Nanodegree](https://classroom.udacity.com/vimdegrees/nd004/); proving
 acces to a database via PostgreSQL and Flask, hosted via a Ubuntu Linux-based Amazon AWS Lightsail instance.
 
-## Result
+## Submission
 
 IP address: [52.34.52.72](http://52.34.52.72)
+
 Hostname: [ec2-54-218-251-215.us-west-2.compute.amazonaws.com](ec2-54-218-251-215.us-west-2.compute.amazonaws.com)
+
 SSH port: 2200
+
 Private Key: udacity
+
 Grader: `ssh -i udacity -p 2200 grader@54.218.251.215`
+
+
 ## Building
 
 ### Register on Amazon
