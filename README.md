@@ -16,6 +16,11 @@ Private Key: udacity
 
 Grader: `ssh -i udacity -p 2200 grader@54.218.251.215`
 
+## Dependencies
+* Apache 2
+* Python 2
+* Flask
+* PostgreSQL 
 
 ## Building
 
@@ -195,3 +200,9 @@ sudo ufw status
 
 ## Restart Apache
 1. Restart Apache `sudo service apache2 restart `
+
+
+## References
+* [How To Set Up a Firewall with UFW on Ubuntu 14.04](https://www.digitalocean.com/community/tutorials/how-to-set-up-a-firewall-with-ufw-on-ubuntu-14-04)
+* [@iliketomatoes's example](https://github.com/iliketomatoes/linux_server_configuration)
+* [Adding and Managing Users on PostgreSQL](https://medium.com/coding-blocks/creating-user-database-and-adding-access-on-postgresql-8bfcd2f4a91e)
