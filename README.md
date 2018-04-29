@@ -83,12 +83,13 @@ __Note:__ Remember to add and save port 2200 with __Application__ as __Custom__ 
 
 ## Configure Uncomplicated Firewall (UFW)
 
-Only allow incoming connections for SSH (port 2200), HTTP (port 80), and NTP (port 123)
+Only allow incoming connections for SSH (port 2200), HTTP (port 80), and NTP (port 123), denying traditional SSH (22).
 
 ```
 sudo ufw allow ssh
 sudo ufw allow www
 sudo ufw allow ntp
+sudo ufw deny 22
 sudo ufw allow 2200/tcp
 sudo ufw allow 80/tcp
 sudo ufw allow 123/udp
@@ -98,9 +99,11 @@ sudo ufw status
 
 ![](img/firewall.png)
 
+**Note**: Probably a good idea to try and SSH in from another terminal before exiting, because if anything is broken here your machine may become inaccessible.
+
 ## Configure local timezone
 
-1. Configure the time zone `sudo dpkg-reconfigure tzdata`
+1. Configure the time zone `sudo dpkg-reconfigure tzdata`.
 
 ## Install and configure Apache to serve a Python mod_wsgi app
 
@@ -111,7 +114,7 @@ sudo ufw status
 ## Install and configure PostgreSQL
 
 1. Install PostgreSQL `sudo apt-get install postgresql`
-2. Check if no remote connections are allowed `sudo vim /etc/postgresql/9.3/main/pg_hba.conf`
+2. Check if no remote connections are allowed `sudo vim /etc/postgresql/9.5/main/pg_hba.conf`
 3. Login as user "postgres" `sudo su - postgres`
 4. Get into postgreSQL shell `psql`
 5. Create a new database named catalog  and  in postgreSQL shell
