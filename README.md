@@ -7,10 +7,10 @@ acces to a database via PostgreSQL and Flask, hosted via a Ubuntu Linux-based Am
 ## Result
 
 IP address: [52.34.52.72](http://52.34.52.72)
-)
+Hostname: [ec2-54-218-251-215.us-west-2.compute.amazonaws.com](ec2-54-218-251-215.us-west-2.compute.amazonaws.com)
 SSH port: 2200
-Key: udacity_key.rsa
-
+Private Key: udacity
+Grader: `ssh -i udacity -p 2200 grader@54.218.251.215`
 ## Building
 
 ### Register on Amazon
@@ -127,21 +127,19 @@ sudo ufw status
 ## Git checkout the Catalog App 
 1. Install Git: `sudo apt-get install git`
 2. Use `cd /var/www` to move to the /var/www directory
-3. Create application directory: `sudo mkdir FlaskApp`
-4. Move inside this directory: `cd FlaskApp`
-5. Clone the Catalog App: `sudo git clone https://github.com/vvkmnn/itemCatalog.git catalog`
-6. Rename the project: `sudo mv ./catalog ./FlaskApp`
-7. Move to the inner FlaskApp directory: `cd FlaskApp`
-8. Rename `server.py` to `__init__.py` with `sudo mv website.py __init__.py`
+3. Create application directory: `sudo mkdir catalog`
+4. Move inside this directory: `cd catalog`
+5. Clone the Catalog App: `sudo git clone <catalog repo> catalog`
+6. Move to the inner directory: `cd catalog`
+8. Rename `application.py` to `__init__.py` with `sudo mv application.py __init__.py`
 9. Edit `database_setup.py` and `fill_catalog.py` changing `engine = create_engine('sqlite:///catalog.db')` to `engine = create_engine('postgresql://catalog:password@localhost/catalog')`
 10. Install pip `sudo apt-get install python-pip`
-11. Use pip to install dependencies -
-	* `sudo pip install sqlalchemy flask-sqlalchemy psycopg2 bleach requests`
-	* `sudo pip install flask packaging oauth2client redis passlib flask-httpauth`
-13. Install psycopg2 `sudo apt-get -qqy install postgresql python-psycopg2`
-14. Create database schema `sudo python database_setup.py`
-15. Fill database `sudo pip install fill_catalog.py`
-
+11. Install the virtual environment `sudo pip install virtualenv`
+12. Create a new virtual environment with `sudo virtualenv venv`
+13. Activate the virutal environment source `venv/bin/activate`
+14. Change permissions `sudo chmod -R 777 venv`
+15. Use pip to install dependencies `pip install requirements.txt`
+16. Create database schema `sudo python database_setup.py`
 
 ## Configure and Enable New Virtual Host
 1. Create FlaskApp.conf to edit: `sudo vim /etc/apache2/sites-available/catalog.conf`
