@@ -6,9 +6,10 @@ acces to a database via PostgreSQL and Flask, hosted via a Ubuntu Linux-based Am
 
 ## Result
 
-IP address: [http://18.218.229.119/](http://18.218.229.119/)
-
+IP address: [52.34.52.72](http://52.34.52.72)
+)
 SSH port: 2200
+Key: udacity_key.rsa
 
 ## Building
 
@@ -143,27 +144,30 @@ sudo ufw status
 
 
 ## Configure and Enable New Virtual Host
-1. Create FlaskApp.conf to edit: `sudo vim /etc/apache2/sites-available/FlaskApp.conf`
+1. Create FlaskApp.conf to edit: `sudo vim /etc/apache2/sites-available/catalog.conf`
 2. Add the following lines of code:
 
 	```
-	<VirtualHost *:80>
-		ServerName lotsofmenus.py
-		ServerAdmin vvkmnn@gmail.com
-		WSGIScriptAlias / /var/www/FlaskApp/flaskapp.wsgi
-		<Directory /var/www/FlaskApp/FlaskApp/>
-			Order allow,deny
-			Allow from all
-		</Directory>
-		Alias /static /var/www/FlaskApp/FlaskApp/static
-		<Directory /var/www/FlaskApp/FlaskApp/static/>
-			Order allow,deny
-			Allow from all
-		</Directory>
-		ErrorLog ${APACHE_LOG_DIR}/error.log
-		LogLevel warn
-		CustomLog ${APACHE_LOG_DIR}/access.log combined
-	</VirtualHost>
+        <VirtualHost *:80>
+    ServerName 54.218.251.215
+    ServerAlias ec2-54-218-251-215.us-west-2.compute.amazonaws.com
+    ServerAdmin admin@54.218.251.215
+    WSGIDaemonProcess catalog python-path=/var/www/catalog:/var/www/catalog/venv/lib/python2.7/site-packages
+    WSGIProcessGroup catalog
+    WSGIScriptAlias / /var/www/catalog/catalog.wsgi
+    <Directory /var/www/catalog/catalog/>
+        Order allow,deny
+        Allow from all
+    </Directory>
+    Alias /static /var/www/catalog/catalog/static
+    <Directory /var/www/catalog/catalog/static/>
+        Order allow,deny
+        Allow from all
+    </Directory>
+    ErrorLog ${APACHE_LOG_DIR}/error.log
+    LogLevel warn
+    CustomLog ${APACHE_LOG_DIR}/access.log combined
+</VirtualHost>
 	```
 3. Enable the virtual host: `sudo a2ensite FlaskApp`
 
@@ -171,20 +175,18 @@ sudo ufw status
 1. Create the `.wsgi` under /var/www/FlaskApp:
 
 	```
-	cd /var/www/FlaskApp
-	sudo vim flaskapp.wsgi
+	cd /var/www/catalog
+	sudo vim catalog.wsgi
 	```
 2. Add the following lines of code:
 
 	```
-	#!/usr/bin/python
-	import sys
-	import logging
-	logging.basicConfig(stream=sys.stderr)
-	sys.path.insert(0,"/var/www/FlaskApp/")
-
-	from FlaskApp import app as application
-	application.secret_key = 'super_secret_key'
+        import sys
+    import logging
+    logging.basicConfig(stream=sys.stderr)
+    sys.path.insert(0, "/var/www/catalog/")
+    from catalog import app as application
+    application.secret_key = 'supersecretkey'
 	```
 
 ## Restart Apache
