@@ -12,8 +12,6 @@ acces to a database via PostgreSQL and Flask, hosted via a Ubuntu Linux-based Am
 
 ~~SSH port: 2200~~
 
-~~Private Key: udacity ~~
-
 ~~Grader: `ssh -i udacity -p 2200 grader@54.218.251.215`~~
 
 ## Dependencies
